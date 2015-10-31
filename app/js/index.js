@@ -42,5 +42,5 @@ document.body.onload = function() {
       });
     }
   });
-}
+};
 
