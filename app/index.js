@@ -6,24 +6,37 @@ document.body.onload = function() {
 
       var content = document.getElementsByClassName("list")[0];
       for (var cat in categories) {
-        var catEl = document.createElement("ul");
-        catEl.setAttribute("class", "list__category");
-        catEl.innerHTML = cat;
+        var row = document.createElement("tr");
+        row.setAttribute("class", "list__row");
+
+        var catCell = document.createElement("td");
+        catCell.setAttribute("class", "list__category");
+        catCell.innerHTML = cat;
+
+        var itemsCell = document.createElement("td");
+        itemsCell.setAttribute("class", "list__items");
+
+        var itemsList = document.createElement("ul");
+        itemsList.setAttribute("class", "list__items-list");
 
         for (var ln in categories[cat]) {
-          var lnItemEl = document.createElement("li");
-          lnItemEl.setAttribute("class", "list__item");
+          var item = document.createElement("li");
+          item .setAttribute("class", "list__items-list__item");
 
-          var lnEl = document.createElement("a");
-          lnEl.setAttribute("href", "http://" + categories[cat][ln]);
-          lnEl.setAttribute("class", "list__link");
-          lnEl.innerHTML = ln;
+          var link = document.createElement("a");
+          link.setAttribute("href", "http://" + categories[cat][ln]);
+          link.setAttribute("class", "list__items-list__link");
+          link.innerHTML = ln;
 
-          lnItemEl.appendChild(lnEl);
-          catEl.appendChild(lnItemEl);
+          item.appendChild(link);
+          itemsList.appendChild(item);
         }
 
-        content.appendChild(catEl);
+        itemsCell.appendChild(itemsList);
+
+        row.appendChild(catCell);
+        row.appendChild(itemsCell);
+        content.appendChild(row);
       }
     }
   });
