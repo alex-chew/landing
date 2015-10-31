@@ -5,13 +5,15 @@ document.body.onload = function() {
       console.log(categories);
 
       var content = document.getElementsByClassName("list")[0];
-      for (var cat in categories) {
+      categories.forEach(function(cat, idx, arr) {
+        console.log(cat);
+
         var row = document.createElement("tr");
         row.setAttribute("class", "list__row");
 
         var catCell = document.createElement("td");
         catCell.setAttribute("class", "list__category");
-        catCell.innerHTML = cat;
+        catCell.innerHTML = cat.name;
 
         var itemsCell = document.createElement("td");
         itemsCell.setAttribute("class", "list__items");
@@ -19,25 +21,25 @@ document.body.onload = function() {
         var itemsList = document.createElement("ul");
         itemsList.setAttribute("class", "list__items-list");
 
-        for (var ln in categories[cat]) {
+        cat.links.forEach(function(ln, idx, arr) {
           var item = document.createElement("li");
-          item .setAttribute("class", "list__items-list__item");
+          item.setAttribute("class", "list__items-list__item");
 
           var link = document.createElement("a");
-          link.setAttribute("href", "http://" + categories[cat][ln]);
+          link.setAttribute("href", "http://" + ln.url);
           link.setAttribute("class", "list__items-list__link");
-          link.innerHTML = ln;
+          link.innerHTML = ln.name;
 
           item.appendChild(link);
           itemsList.appendChild(item);
-        }
+        });
 
         itemsCell.appendChild(itemsList);
 
         row.appendChild(catCell);
         row.appendChild(itemsCell);
         content.appendChild(row);
-      }
+      });
     }
   });
 }
