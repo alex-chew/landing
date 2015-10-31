@@ -1,0 +1,36 @@
+body {
+  background: #2b303b;
+
+  color: #eff1f5;
+  font-family: "CMU Serif", serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
+.list {
+  width: 300px;
+  height: auto;
+
+  border: 1px dotted white;
+}
+
+.list__category {
+  font-size: 40px;
+}
+
+.list__item {
+  font-size: 24px;
+  list-style: none;
+}
+
+.list__link {
+  color: inherit;
+  text-decoration: none;
+}
+

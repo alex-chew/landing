@@ -1,0 +1,13 @@
+{
+  "name": "Landing",
+  "version": "0.1",
+  "manifest_version": 2,
+  "options_page": "app/options.html",
+  "chrome_url_overrides": {
+    "newtab": "app/index.html"
+  },
+  "permissions": [
+    "storage"
+  ]
+}
+

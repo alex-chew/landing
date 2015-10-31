@@ -1,0 +1,17 @@
+{
+  "categories": {
+    "School": {
+      "ECE 15": "ece15.info",
+      "CSE 11": "cseweb.ucsd.edu/~ricko/CSE11/",
+      "Piazza": "piazza.com",
+      "Ted": "ted.ucsd.edu"
+    },
+    "Fun": {
+      "XKCD": "xkcd.com",
+      "SMBC": "smbc-comics.com",
+      "Reddit": "reddit.com",
+      "YouTube": "youtube.com"
+    }
+  }
+}
+
