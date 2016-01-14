@@ -2,12 +2,9 @@ document.body.onload = function() {
   chrome.storage.sync.get("landing_prefs", function(items) {
     if (!chrome.runtime.error && items.landing_prefs) {
       var categories = items.landing_prefs.categories;
-      console.log(categories);
 
       var content = document.getElementsByClassName("list")[0];
       categories.forEach(function(cat, idx, arr) {
-        console.log(cat);
-
         var row = document.createElement("tr");
         row.setAttribute("class", "list__row");
 
@@ -26,7 +23,7 @@ document.body.onload = function() {
           item.setAttribute("class", "list__items-list__item");
 
           var link = document.createElement("a");
-          link.setAttribute("href", "http://" + ln.url);
+          link.setAttribute("href", ln.url);
           link.setAttribute("class", "list__items-list__link");
           link.innerHTML = ln.name;
 
