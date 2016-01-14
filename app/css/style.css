@@ -1,8 +1,13 @@
+@font-face {
+  font-family: "Crimson Text";
+  src: url("../fonts/CrimsonText-Roman.ttf");
+}
+
 body {
   background: #2b303b;
 
   color: #eff1f5;
-  font-family: "CMU Serif", serif;
+  font-family: "Crimson Text", serif;
   text-transform: lowercase;
 }
 
@@ -26,9 +31,6 @@ body {
 
   text-align: right;
   vertical-align: top;
-}
-
-.list__items {
 }
 
 .list__items-list {
