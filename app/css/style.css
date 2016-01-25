@@ -62,6 +62,7 @@ body {
   height: auto;
 
   font-size: 24px;
+  text-align: center;
 }
 
 .errMsg__link {

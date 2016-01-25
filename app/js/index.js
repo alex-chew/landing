@@ -1,19 +1,22 @@
 function createIndex(baseFolder) {
   if (!baseFolder) {
+    // Main container on page (from index.html)
     var container = document.getElementsByClassName("container")[0];
 
+    // Error message
     var errMsg = document.createElement("div");
     errMsg.setAttribute("class", "errMsg");
     errMsg.innerHTML = "The bookmarks folder that Landing uses could not be found. For more information, please visit ";
 
+    // Link to options page
     var errLink = document.createElement("a");
     errLink.setAttribute("href", "options.html");
     errLink.setAttribute("class", "errMsg__link");
     errLink.innerHTML = "the Options page.";
 
+    // Add to document and leave
     errMsg.appendChild(errLink);
     container.appendChild(errMsg);
-
     return;
   }
 
@@ -22,8 +25,13 @@ function createIndex(baseFolder) {
     // Get array of category (folder) nodes
     var categories = tree[0].children;
 
-    // Main list element on page (from index.html)
-    var content = document.getElementsByClassName("list")[0];
+    // Main container on page (from index.html)
+    var container = document.getElementsByClassName("container")[0];
+
+    // Add main table to container
+    var content = document.createElement("table");
+    content.setAttribute("class", "list");
+    container.appendChild(content);
 
     // Populate each category row
     categories.forEach(function(cat, idx, arr) {
