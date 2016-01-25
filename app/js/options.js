@@ -32,7 +32,9 @@ function populateInputs() {
     // Populate inputs with options
     document.getElementsByName("bgcolor")[0].value = options.bgcolor;
     document.getElementsByName("lncolor")[0].value = options.lncolor;
+    document.getElementsByName("lnsize")[0].value = options.lnsize;
     document.getElementsByName("txcolor")[0].value = options.txcolor;
+    document.getElementsByName("txsize")[0].value = options.txsize;
   });
 }
 
@@ -41,7 +43,9 @@ function saveOptions() {
     landing_options: {
       bgcolor: document.getElementsByName("bgcolor")[0].value,
       lncolor: document.getElementsByName("lncolor")[0].value,
-      txcolor: document.getElementsByName("txcolor")[0].value
+      lnsize: document.getElementsByName("lnsize")[0].value,
+      txcolor: document.getElementsByName("txcolor")[0].value,
+      txsize: document.getElementsByName("txsize")[0].value
     }
   }, function() {});
 }
@@ -51,7 +55,9 @@ function setToDefaults() {
     landing_options: {
       bgcolor: "#2b303b", // navy blue
       lncolor: "#4f5b66", // light navy
-      txcolor: "#eff1f5" // bright bluish white
+      lnsize: 1,
+      txcolor: "#eff1f5", // bright bluish white
+      txsize: 24
     }
   }, function() {});
 }

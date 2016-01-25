@@ -41,14 +41,14 @@ function createIndex(baseFolder) {
 
       // Create cell with category title
       var catCell = document.createElement("td");
-      catCell.setAttribute("class", "list__category text-color");
+      catCell.setAttribute("class", "list__category text-custom");
       catCell.innerHTML = cat.title;
 
       // Create cell for links, and list to hold the links
       var itemsCell = document.createElement("td");
       itemsCell.setAttribute("class", "list__items");
       var itemsList = document.createElement("ul");
-      itemsList.setAttribute("class", "list__items-list line-color");
+      itemsList.setAttribute("class", "list__items-list line-custom");
 
       // Populate category link lists
       cat.children.forEach(function(bookmark) {
@@ -59,7 +59,7 @@ function createIndex(baseFolder) {
         // Create link to place in link
         var link = document.createElement("a");
         link.setAttribute("href", bookmark.url);
-        link.setAttribute("class", "list__items-list__link text-color");
+        link.setAttribute("class", "list__items-list__link text-custom");
         link.innerHTML = bookmark.title;
 
         // Add link element to item, and add item to list
@@ -82,9 +82,13 @@ function setColors() {
 
     var style = document.createElement("style");
     style.type = "text/css";
-    style.innerHTML += `body {background: ${options.bgcolor}}\n`;
-    style.innerHTML += `.line-color {border-left-color: ${options.lncolor}}\n`;
-    style.innerHTML += `.text-color {color: ${options.txcolor}}\n`;
+    style.innerHTML += `body {background: ${options.bgcolor};}\n`;
+    style.innerHTML +=
+        `.line-custom {border-left-color: ${options.lncolor};
+        border-left-width: ${options.lnsize}px;}\n`;
+    style.innerHTML +=
+        `.text-custom {color: ${options.txcolor};
+        font-size: ${options.txsize}px;}\n`;
 
     document.head.appendChild(style);
   });
