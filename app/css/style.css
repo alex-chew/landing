@@ -4,7 +4,10 @@
 }
 
 body {
+  background: #ccc;
   font-family: "Crimson Text", serif;
+
+  transition: background 0.25s ease-out 0s;
 }
 
 .container {
@@ -57,5 +60,15 @@ body {
 
   font-size: 24px;
   text-align: center;
+}
+
+.text-custom {
+  color: #ccc;
+  transition: color 0.25s ease-out 0s;
+}
+
+.line-custom {
+  border-left-color: #ccc;
+  transition: border-left-color 0.25s ease-out 0s;
 }
 
