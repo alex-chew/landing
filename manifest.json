@@ -7,6 +7,7 @@
     "newtab": "app/index.html"
   },
   "permissions": [
+    "bookmarks",
     "storage"
   ]
 }
