@@ -80,6 +80,10 @@ function setColors() {
   chrome.storage.sync.get("landing_options", function(items) {
     var options = items.landing_options;
 
+    if (!options) {
+      window.open("intro.html");
+    }
+
     var style = document.createElement("style");
     style.type = "text/css";
     style.innerHTML += `body {background: ${options.bgcolor};}\n`;
