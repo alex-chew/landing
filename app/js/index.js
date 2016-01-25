@@ -5,13 +5,13 @@ function createIndex(baseFolder) {
 
     // Error message
     var errMsg = document.createElement("div");
-    errMsg.setAttribute("class", "errMsg");
+    errMsg.setAttribute("class", "errMsg text-custom");
     errMsg.innerHTML = "The bookmarks folder that Landing uses could not be found. For more information, please visit ";
 
     // Link to options page
     var errLink = document.createElement("a");
     errLink.setAttribute("href", "options.html");
-    errLink.setAttribute("class", "errMsg__link");
+    errLink.setAttribute("class", "errMsg__link text-custom");
     errLink.innerHTML = "the Options page.";
 
     // Add to document and leave
