@@ -1,6 +1,19 @@
 function createIndex(baseFolder) {
   if (!baseFolder) {
-    console.log("Base folder not found");
+    var container = document.getElementsByClassName("container")[0];
+
+    var errMsg = document.createElement("div");
+    errMsg.setAttribute("class", "errMsg");
+    errMsg.innerHTML = "The bookmarks folder that Landing uses could not be found. For more information, please visit ";
+
+    var errLink = document.createElement("a");
+    errLink.setAttribute("href", "options.html");
+    errLink.setAttribute("class", "errMsg__link");
+    errLink.innerHTML = "the Options page.";
+
+    errMsg.appendChild(errLink);
+    container.appendChild(errMsg);
+
     return;
   }
 

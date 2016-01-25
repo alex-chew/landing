@@ -8,7 +8,6 @@ body {
 
   color: #eff1f5;
   font-family: "Crimson Text", serif;
-  text-transform: lowercase;
 }
 
 .container {
@@ -55,6 +54,17 @@ body {
 
 .list__items-list__link {
   text-decoration: none;
+  color: #eff1f5;
+}
+
+.errMsg {
+  width: 300px;
+  height: auto;
+
+  font-size: 24px;
+}
+
+.errMsg__link {
   color: #eff1f5;
 }
 
