@@ -1,15 +1,26 @@
 <!doctype html>
 <html>
   <head>
-    <title>Options</title>
+    <title>Landing options</title>
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/bootstrap3.css">
     <link rel="stylesheet" href="css/options.css">
   </head>
   <body>
-    <div class="editor-container"></div>
-    <button class="editor-save">Save</button>
-    <script src="js/jsoneditor.js"></script>
+    <div class="container">
+      <div class="option">
+        <label for="bgcolor" class="option__label">Background color</label>
+        <input type="color" name="bgcolor" class="option__input">
+      </div>
+      <div class="option">
+        <label for="lncolor" class="option__label">Separator line color</label>
+        <input type="color" name="lncolor" class="option__input">
+      </div>
+      <div class="option">
+        <label for="txcolor" class="option__label">Text color</label>
+        <input type="color" name="txcolor" class="option__input">
+      </div>
+      <button name="save" class="save">Save</button>
+    </div>
     <script src="js/options.js"></script>
   </body>
 </html>
