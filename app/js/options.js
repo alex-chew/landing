@@ -10,15 +10,25 @@ document.body.onload = function() {
       setToDefaults();
     }
 
-    populateInputs(items.landing_options);
+    populateInputs();
   });
 
   var saveButton = document.getElementsByName("save")[0];
   saveButton.addEventListener("click", saveOptions);
+
+  var resetButton = document.getElementsByName("reset")[0];
+  resetButton.addEventListener("click", function() {
+    if (window.confirm("Reset to default settings? All current settings will be lost.")) {
+      setToDefaults();
+      populateInputs();
+    }
+  });
 };
 
-function populateInputs(options) {
+function populateInputs() {
   chrome.storage.sync.get("landing_options", function(items) {
+    var options = items.landing_options;
+
     // Populate inputs with options
     document.getElementsByName("bgcolor")[0].value = options.bgcolor;
     document.getElementsByName("lncolor")[0].value = options.lncolor;
@@ -37,7 +47,6 @@ function saveOptions() {
 }
 
 function setToDefaults() {
-  console.log("Setting defaults");
   chrome.storage.sync.set({
     landing_options: {
       bgcolor: "#2b303b", // navy blue
