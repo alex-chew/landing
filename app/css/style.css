@@ -4,9 +4,6 @@
 }
 
 body {
-  background: #2b303b;
-
-  color: #eff1f5;
   font-family: "Crimson Text", serif;
 }
 
@@ -40,7 +37,6 @@ body {
 
   border-left-width: 1px;
   border-left-style: solid;
-  border-left-color: #4f5b66;
 }
 
 .list__row:not(:last-child) .list__items-list {
@@ -54,7 +50,6 @@ body {
 
 .list__items-list__link {
   text-decoration: none;
-  color: #eff1f5;
 }
 
 .errMsg {
@@ -63,9 +58,5 @@ body {
 
   font-size: 24px;
   text-align: center;
-}
-
-.errMsg__link {
-  color: #eff1f5;
 }
 
