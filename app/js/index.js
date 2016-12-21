@@ -30,7 +30,7 @@ function createIndex(baseFolder) {
 
     // Add main table to container
     var content = document.createElement("table");
-    content.setAttribute("class", "table");
+    content.setAttribute("class", "table text-custom");
     container.appendChild(content);
 
     // Populate each category row
@@ -41,7 +41,7 @@ function createIndex(baseFolder) {
 
       // Create cell with category title
       var catCell = document.createElement("td");
-      catCell.setAttribute("class", "category text-custom");
+      catCell.setAttribute("class", "category");
       catCell.innerHTML = cat.title;
 
       // Create cell for links, and list to hold the links
@@ -58,7 +58,7 @@ function createIndex(baseFolder) {
         // Create link to place in link
         var link = document.createElement("a");
         link.setAttribute("href", bookmark.url);
-        link.setAttribute("class", "link text-custom");
+        link.setAttribute("class", "link");
         link.innerHTML = bookmark.title;
 
         // Add link element to item, and add item to list

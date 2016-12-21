@@ -16,8 +16,6 @@ body {
 .table {
   width: auto;
   height: auto;
-
-  font-size: 24px;
 }
 
 .row:not(:last-child) .list {
@@ -47,6 +45,7 @@ body {
 
 .link {
   text-decoration: none;
+  color: inherit;
 }
 
 .errMsg {
