@@ -88,6 +88,7 @@ function setColors() {
     var lncolor = options.lncolor || "#333";
     var lnsize = options.lnsize || "2";
     var txcolor = options.txcolor || "#333";
+    var font = options.font || "sans-serif";
     var txsize = options.txsize || "20";
 
     var style = document.createElement("style");
@@ -98,6 +99,7 @@ function setColors() {
         border-left-width: ${lnsize}px;}\n`;
     style.innerHTML +=
         `.text-custom {color: ${txcolor};
+        font-family: ${font};
         font-size: ${txsize}px;}\n`;
 
     document.head.appendChild(style);

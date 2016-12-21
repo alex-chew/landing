@@ -33,6 +33,7 @@ function populateInputs() {
     document.getElementsByName("bgcolor")[0].value = options.bgcolor;
     document.getElementsByName("lncolor")[0].value = options.lncolor;
     document.getElementsByName("lnsize")[0].value = options.lnsize;
+    document.getElementsByName("font")[0].value = options.font;
     document.getElementsByName("txcolor")[0].value = options.txcolor;
     document.getElementsByName("txsize")[0].value = options.txsize;
   });
@@ -44,6 +45,7 @@ function saveOptions() {
       bgcolor: document.getElementsByName("bgcolor")[0].value,
       lncolor: document.getElementsByName("lncolor")[0].value,
       lnsize: document.getElementsByName("lnsize")[0].value,
+      font: document.getElementsByName("font")[0].value,
       txcolor: document.getElementsByName("txcolor")[0].value,
       txsize: document.getElementsByName("txsize")[0].value
     }
@@ -56,6 +58,7 @@ function setToDefaults() {
       bgcolor: "#ccc",
       lncolor: "#333",
       lnsize: 2,
+      font: "sans-serif",
       txcolor: "#333",
       txsize: 20
     }
