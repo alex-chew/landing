@@ -14,7 +14,7 @@ body {
 }
 
 .list {
-  width: 300px;
+  width: auto;
   height: auto;
 
   font-size: 24px;
