@@ -19,12 +19,12 @@ body {
 }
 
 .row:not(:last-child) .list {
-  margin-bottom: 20px;
+  margin-bottom: 1.6em;
 }
 
 .category {
   box-sizing: border-box;
-  padding: 0 15px 0 0;
+  padding-right: 0.8em;
 
   text-align: right;
   vertical-align: top;
@@ -33,12 +33,14 @@ body {
 .list {
   box-sizing: border-box;
   margin: 0;
-  padding: 0 0 0 15px;
+  padding-left: 0.8em;
 
   border-left-style: solid;
 }
 
 .item {
+  margin-bottom: 0.4em;
+
   list-style: none;
   vertical-align: top;
 }
