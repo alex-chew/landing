@@ -81,17 +81,24 @@ function setColors() {
 
     if (!options) {
       window.open("intro.html");
+      options = {};
     }
+
+    var bgcolor = options.bgcolor || "#ccc";
+    var lncolor = options.lncolor || "#333";
+    var lnsize = options.lnsize || "2";
+    var txcolor = options.txcolor || "#333";
+    var txsize = options.txsize || "20";
 
     var style = document.createElement("style");
     style.type = "text/css";
-    style.innerHTML += `body {background: ${options.bgcolor};}\n`;
+    style.innerHTML += `body {background: ${bgcolor};}\n`;
     style.innerHTML +=
-        `.line-custom {border-left-color: ${options.lncolor};
-        border-left-width: ${options.lnsize}px;}\n`;
+        `.line-custom {border-left-color: ${lncolor};
+        border-left-width: ${lnsize}px;}\n`;
     style.innerHTML +=
-        `.text-custom {color: ${options.txcolor};
-        font-size: ${options.txsize}px;}\n`;
+        `.text-custom {color: ${txcolor};
+        font-size: ${txsize}px;}\n`;
 
     document.head.appendChild(style);
   });

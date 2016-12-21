@@ -53,11 +53,11 @@ function saveOptions() {
 function setToDefaults() {
   chrome.storage.sync.set({
     landing_options: {
-      bgcolor: "#2b303b", // navy blue
-      lncolor: "#4f5b66", // light navy
-      lnsize: 1,
-      txcolor: "#eff1f5", // bright bluish white
-      txsize: 24
+      bgcolor: "#ccc",
+      lncolor: "#333",
+      lnsize: 2,
+      txcolor: "#333",
+      txsize: 20
     }
   }, function() {});
 }
