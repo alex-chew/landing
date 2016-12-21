@@ -13,14 +13,18 @@ body {
   height: 100vh;
 }
 
-.list {
+.table {
   width: auto;
   height: auto;
 
   font-size: 24px;
 }
 
-.list__category {
+.row:not(:last-child) .list {
+  margin-bottom: 20px;
+}
+
+.category {
   box-sizing: border-box;
   padding: 0 15px 0 0;
 
@@ -28,7 +32,7 @@ body {
   vertical-align: top;
 }
 
-.list__items-list {
+.list {
   box-sizing: border-box;
   margin: 0;
   padding: 0 0 0 15px;
@@ -36,16 +40,12 @@ body {
   border-left-style: solid;
 }
 
-.list__row:not(:last-child) .list__items-list {
-  margin-bottom: 20px;
-}
-
-.list__items-list__item {
+.item {
   list-style: none;
   vertical-align: top;
 }
 
-.list__items-list__link {
+.link {
   text-decoration: none;
 }
 
