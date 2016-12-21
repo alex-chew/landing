@@ -1,11 +1,6 @@
-@font-face {
-  font-family: "Crimson Text";
-  src: url("../fonts/CrimsonText-Roman.ttf");
-}
-
 body {
   background: #ccc;
-  font-family: "Crimson Text", serif;
+  font-family: "Roboto Mono", monospace;
 
   transition: background 0.25s ease-out 0s;
 }
