@@ -1,25 +1,4 @@
-function createIndex(baseFolder) {
-  if (!baseFolder) {
-    // Main container on page (from index.html)
-    var container = document.getElementsByClassName("container")[0];
-
-    // Error message
-    var errMsg = document.createElement("div");
-    errMsg.setAttribute("class", "errMsg text-custom");
-    errMsg.innerHTML = "The bookmarks folder that Landing uses could not be found. For more information, please visit ";
-
-    // Link to options page
-    var errLink = document.createElement("a");
-    errLink.setAttribute("href", "options.html");
-    errLink.setAttribute("class", "errMsg__link text-custom");
-    errLink.innerHTML = "the Options page.";
-
-    // Add to document and leave
-    errMsg.appendChild(errLink);
-    container.appendChild(errMsg);
-    return;
-  }
-
+function createDom(baseFolder) {
   // Populate index page
   chrome.bookmarks.getSubTree(baseFolder.id, function(tree) {
     // Get array of category (folder) nodes
@@ -109,15 +88,37 @@ function setColors() {
 document.body.onload = function() {
   chrome.bookmarks.get("2", function(nodes) { // id "2" is "Other bookmarks"
     var baseFolder;
+    var pageSetup = function() {
+      setColors();
+      createDom(baseFolder);
+    };
 
     // Iterate over "Other bookmarks" to find base folder
     chrome.bookmarks.getChildren(nodes[0].id, function(nodes) {
-      baseFolder = nodes.find(function(node, idx, arr) {
-        return node.title == "landing";
-      });
+      baseFolder = nodes.find(node => node.title == "landing");
+      if (baseFolder) {
+        pageSetup();
+        return;
+      }
 
-      setColors();
-      createIndex(baseFolder);
+      // Create sample bookmarks in a very messy way
+      chrome.bookmarks.create({
+        parentId: "2",
+        title: "landing"
+      }, function(base) {
+        // Set baseFolder for pageSetup
+        baseFolder = base;
+        chrome.bookmarks.create({
+          parentId: base.id,
+          title: "Welcome!"
+        }, function(welcome) {
+          chrome.bookmarks.create({
+            parentId: welcome.id,
+            title: "Add bookmarks to the \"landing\" folder to get started.",
+            url: "chrome://bookmarks"
+          }, pageSetup);
+        });
+      });
     });
   });
 };
