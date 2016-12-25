@@ -56,13 +56,7 @@ function createDom(baseFolder) {
 
 function setColors() {
   chrome.storage.sync.get("landing_options", function(items) {
-    var options = items.landing_options;
-
-    if (!options) {
-      window.open("intro.html");
-      options = {};
-    }
-
+    var options = items.landing_options || {};
     var bgcolor = options.bgcolor || "#ccc";
     var lncolor = options.lncolor || "#333";
     var lnsize = options.lnsize || "2";
