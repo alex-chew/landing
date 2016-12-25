@@ -55,11 +55,11 @@ function saveOptions() {
 function setToDefaults() {
   chrome.storage.sync.set({
     landing_options: {
-      bgcolor: "#ccc",
-      lncolor: "#333",
+      bgcolor: "#cccccc",
+      lncolor: "#333333",
       lnsize: 2,
       font: "sans-serif",
-      txcolor: "#333",
+      txcolor: "#333333",
       txsize: 20
     }
   }, function() {});
