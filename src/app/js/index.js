@@ -1,4 +1,13 @@
-function createDom(baseFolder) {
+var defaultOptions = {
+  bgcolor: "#cccccc",
+  lncolor: "#333333",
+  lnsize: 2,
+  font: "sans-serif",
+  txcolor: "#333333",
+  txsize: 20
+};
+
+function createDom(baseFolder, options) {
   // Populate index page
   chrome.bookmarks.getSubTree(baseFolder.id, function(tree) {
     // Get array of category (folder) nodes
@@ -54,66 +63,72 @@ function createDom(baseFolder) {
   });
 }
 
-function setColors() {
-  chrome.storage.sync.get("landing_options", function(items) {
-    var options = items.landing_options || {};
-    var bgcolor = options.bgcolor || "#ccc";
-    var lncolor = options.lncolor || "#333";
-    var lnsize = options.lnsize || "2";
-    var txcolor = options.txcolor || "#333";
-    var font = options.font || "sans-serif";
-    var txsize = options.txsize || "20";
+function setStyles(options) {
+  var style = document.createElement("style");
+  style.type = "text/css";
+  style.innerHTML += `body {background: ${options.bgcolor};}\n`;
+  style.innerHTML +=
+    `.line-custom {border-left-color: ${options.lncolor};
+      border-left-width: ${options.lnsize}px;}\n`;
+  style.innerHTML +=
+    `.text-custom {color: ${options.txcolor};
+      font-family: ${options.font};
+      font-size: ${options.txsize}px;}\n`;
 
-    var style = document.createElement("style");
-    style.type = "text/css";
-    style.innerHTML += `body {background: ${bgcolor};}\n`;
-    style.innerHTML +=
-        `.line-custom {border-left-color: ${lncolor};
-        border-left-width: ${lnsize}px;}\n`;
-    style.innerHTML +=
-        `.text-custom {color: ${txcolor};
-        font-family: ${font};
-        font-size: ${txsize}px;}\n`;
-
-    document.head.appendChild(style);
-  });
+  document.head.appendChild(style);
 }
 
-document.body.onload = function() {
-  chrome.bookmarks.get("2", function(nodes) { // id "2" is "Other bookmarks"
-    var baseFolder;
-    var pageSetup = function() {
-      setColors();
-      createDom(baseFolder);
-    };
+async function getBaseFolder() {
+  var bookmarks = await (new Promise(resolve => {
+    chrome.bookmarks.getChildren("2", resolve);
+  }));
 
-    // Iterate over "Other bookmarks" to find base folder
-    chrome.bookmarks.getChildren(nodes[0].id, function(nodes) {
-      baseFolder = nodes.find(node => node.title == "landing");
-      if (baseFolder) {
-        pageSetup();
-        return;
-      }
+  return bookmarks.find(node => node.title == "landing") ||
+    sampleBaseFolder();
+}
 
-      // Create sample bookmarks in a very messy way
-      chrome.bookmarks.create({
-        parentId: "2",
-        title: "landing"
-      }, function(base) {
-        // Set baseFolder for pageSetup
-        baseFolder = base;
-        chrome.bookmarks.create({
-          parentId: base.id,
-          title: "Welcome!"
-        }, function(welcome) {
-          chrome.bookmarks.create({
-            parentId: welcome.id,
-            title: "Add bookmarks to the \"landing\" folder to get started.",
-            url: "chrome://bookmarks"
-          }, pageSetup);
-        });
-      });
-    });
+async function getOptions() {
+  var options = await (new Promise(resolve => {
+    chrome.storage.sync.get("landing_options", resolve);
+  }));
+
+  return options.landing_options || sampleOptions();
+}
+
+async function sampleBaseFolder() {
+  var landing = await (new Promise(resolve => {
+    chrome.bookmarks.create({parentId: "2", title: "landing"}, resolve);
+  }));
+
+  var welcome = await (new Promise(resolve => {
+    chrome.bookmarks.create({
+      parentId: landing.id,
+      title: "Welcome!"
+    }, resolve);
+  }));
+
+  var instructions = await (new Promise(resolve => {
+    chrome.bookmarks.create({
+      parentId: welcome.id,
+      title: "Click here for instructions on how to get started.",
+      url: "https://github.com/alex-chew/landing#usage"
+    }, resolve);
+  }));
+
+  return landing;
+}
+
+function sampleOptions() {
+  chrome.storage.sync.set({
+    landing_options: defaultOptions
+  });
+  return defaultOptions;
+}
+
+document.body.onload = async function() {
+  Promise.all([getBaseFolder(), getOptions()]).then(results => {
+    setStyles(results[1]);
+    createDom(results[0], results[1]);
   });
 };
 

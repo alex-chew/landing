@@ -1,11 +1,19 @@
 var optionNames = [
-    "bgcolor",
-    "lncolor",
-    "lnsize",
-    "font",
-    "txcolor",
-    "txsize"
+  "bgcolor",
+  "lncolor",
+  "lnsize",
+  "font",
+  "txcolor",
+  "txsize"
 ];
+var defaultOptions = {
+  bgcolor: "#cccccc",
+  lncolor: "#333333",
+  lnsize: 2,
+  font: "sans-serif",
+  txcolor: "#333333",
+  txsize: 20
+};
 
 function setOptions(options) {
   for (let o of optionNames) {
@@ -62,14 +70,7 @@ function saveOptions() {
 
 function setToDefaults() {
   chrome.storage.sync.set({
-    landing_options: {
-      bgcolor: "#cccccc",
-      lncolor: "#333333",
-      lnsize: 2,
-      font: "sans-serif",
-      txcolor: "#333333",
-      txsize: 20
-    }
+    landing_options: defaultOptions;
   }, function() {});
 }
 
