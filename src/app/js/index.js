@@ -51,6 +51,12 @@ function createDom(baseFolder, options) {
       row.appendChild(itemsCell);
       content.appendChild(row);
     });
+
+    // Add quote
+    var quote = document.createElement("div");
+    quote.setAttribute("class", "quote text-custom");
+    quote.innerHTML = options.quote;
+    container.appendChild(quote);
   });
 }
 

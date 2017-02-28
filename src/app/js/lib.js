@@ -6,7 +6,8 @@ var defaultOptions = {
   lnsize: 2,
   font: "sans-serif",
   txcolor: "#333333",
-  txsize: 20
+  txsize: 20,
+  quote: "",
 };
 
 async function getBaseFolder() {
