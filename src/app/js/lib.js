@@ -20,11 +20,21 @@ var Landing = (() => {
   };
 
   var getOptions = async function() {
-    var options = await (new Promise(resolve => {
+    var options = (await (new Promise(resolve => {
       chrome.storage.sync.get("landing_options", resolve);
-    }));
+    }))).landing_options;
 
-    return options.landing_options || sampleOptions();
+    if (options) {
+      // Ensure that all option values have set, even if the options from
+      // storage have missing values
+      for (var o in defaultOptions) {
+        if (options[o] == undefined) options[o] = defaultOptions[o];
+      }
+    } else {
+      options = sampleOptions();
+    }
+
+    return options;
   };
 
   var sampleBaseFolder = async function() {
