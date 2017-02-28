@@ -1,8 +1,6 @@
 body {
-  background: #ccc;
+  background: #333;
   font-family: "Roboto Mono", monospace;
-
-  transition: background 0.25s ease-out 0s;
 }
 
 .container {
