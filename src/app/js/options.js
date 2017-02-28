@@ -1,3 +1,26 @@
+var optionNames = [
+    "bgcolor",
+    "lncolor",
+    "lnsize",
+    "font",
+    "txcolor",
+    "txsize"
+];
+
+function setOptions(options) {
+  for (let o of optionNames) {
+    document.getElementsByName(o)[0].value = options[o];
+  }
+}
+
+function getOptions() {
+  var options = {};
+  for (let o of optionNames) {
+    options[o] = document.getElementsByName(o)[0].value;
+  }
+  return options;
+}
+
 document.body.onload = function() {
   chrome.storage.sync.get("landing_options", function(items) {
     if (chrome.runtime.error) {
@@ -27,28 +50,13 @@ document.body.onload = function() {
 
 function populateInputs() {
   chrome.storage.sync.get("landing_options", function(items) {
-    var options = items.landing_options;
-
-    // Populate inputs with options
-    document.getElementsByName("bgcolor")[0].value = options.bgcolor;
-    document.getElementsByName("lncolor")[0].value = options.lncolor;
-    document.getElementsByName("lnsize")[0].value = options.lnsize;
-    document.getElementsByName("font")[0].value = options.font;
-    document.getElementsByName("txcolor")[0].value = options.txcolor;
-    document.getElementsByName("txsize")[0].value = options.txsize;
+    setOptions(items.landing_options);
   });
 }
 
 function saveOptions() {
   chrome.storage.sync.set({
-    landing_options: {
-      bgcolor: document.getElementsByName("bgcolor")[0].value,
-      lncolor: document.getElementsByName("lncolor")[0].value,
-      lnsize: document.getElementsByName("lnsize")[0].value,
-      font: document.getElementsByName("font")[0].value,
-      txcolor: document.getElementsByName("txcolor")[0].value,
-      txsize: document.getElementsByName("txsize")[0].value
-    }
+    landing_options: getOptions()
   }, function() {});
 }
 
