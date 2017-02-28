@@ -76,7 +76,7 @@
     document.head.appendChild(style);
   };
 
-  document.body.onload = async function() {
+  document.body.onload = function() {
     Promise.all([Landing.getBaseFolder(), Landing.getOptions()])
       .then(results => {
         setStyles(results[1]);

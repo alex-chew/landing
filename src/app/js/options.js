@@ -12,9 +12,12 @@
     return options;
   };
 
-  document.body.onload = async function() {
-    var options = await Landing.getOptions();
-    setOptionValues(options);
+  document.body.onload = function() {
+    var options = {};
+    Landing.getOptions().then(o => {
+      options = o;
+      setOptionValues(options);
+    });
 
     var saveButton = document.getElementsByName("save")[0];
     saveButton.addEventListener("click", () => {
