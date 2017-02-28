@@ -2,6 +2,9 @@
   "name": "Landing",
   "version": "0.5",
   "manifest_version": 2,
+  "background": {
+    "page": "app/bg.html"
+  },
   "options_ui": {
     "page": "app/options.html",
     "chrome_style": true

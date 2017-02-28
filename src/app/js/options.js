@@ -28,10 +28,11 @@
 
     var resetButton = document.getElementsByName("reset")[0];
     resetButton.addEventListener("click", () => {
-      // if (window.confirm("Reset to default settings? All current settings will be lost.")) {
+      if (chrome.extension.getBackgroundPage()
+          .confirm("Reset to default settings? This cannot be undone.")) {
       options = Landing.sampleOptions();
       setOptionValues(options);
-      // }
+      }
     });
   };
 })();
