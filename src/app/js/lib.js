@@ -57,6 +57,14 @@ var Landing = (() => {
       }, resolve);
     }));
 
+    var optionsPage = await (new Promise(resolve => {
+      chrome.bookmarks.create({
+        parentId: welcome.id,
+        title: "Or click here to customize the theme!",
+        url: chrome.runtime.getURL("app/options.html")
+      }, resolve);
+    }));
+
     return landing;
   };
 
