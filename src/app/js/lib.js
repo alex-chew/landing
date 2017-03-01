@@ -6,6 +6,7 @@ var Landing = (() => {
     lnsize: 2,
     font: "sans-serif",
     txcolor: "#333333",
+    txcolorhv: "#0000FF",
     txsize: 20,
     quote: "",
   };
@@ -73,4 +74,3 @@ var Landing = (() => {
     sampleOptions: sampleOptions,
   };
 })();
-

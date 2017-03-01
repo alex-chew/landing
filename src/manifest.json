@@ -1,6 +1,6 @@
 {
   "name": "Landing",
-  "version": "0.5",
+  "version": "0.6",
   "manifest_version": 2,
   "options_ui": {
     "page": "app/options.html",
@@ -14,4 +14,3 @@
     "storage"
   ]
 }
-

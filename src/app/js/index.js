@@ -71,7 +71,8 @@
     style.innerHTML +=
       `.text-custom {color: ${options.txcolor};
         font-family: ${options.font};
-        font-size: ${options.txsize}px;}\n`;
+        font-size: ${options.txsize}px;}\n
+        .text-custom .item:hover {color: ${options.txcolorhv}}\n`;
 
     document.head.appendChild(style);
   };
