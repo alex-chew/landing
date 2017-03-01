@@ -72,7 +72,7 @@
       `.text-custom {color: ${options.txcolor};
         font-family: ${options.font};
         font-size: ${options.txsize}px;}\n
-        .text-custom .item:hover {color: ${options.txcolorhv}}\n`;
+        .link:hover, .link:focus {color: ${options.txcolorhv}}\n`;
 
     document.head.appendChild(style);
   };
