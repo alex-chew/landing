@@ -11,13 +11,18 @@ var Landing = (() => {
     quote: "",
   };
 
-  var getBaseFolder = async function() {
-    var bookmarks = await (new Promise(resolve => {
+  var getCategories = async function() {
+    var otherBookmarks = await (new Promise(resolve => {
       chrome.bookmarks.getChildren("2", resolve);
     }));
 
-    return bookmarks.find(node => node.title == "landing") ||
-      sampleBaseFolder();
+    var baseFolder =
+      otherBookmarks.find(node => node.title == "landing") ||
+      await sampleBaseFolder();
+
+    return (await (new Promise(resolve => {
+      chrome.bookmarks.getSubTree(baseFolder.id, resolve);
+    })))[0].children;
   };
 
   var getOptions = async function() {
@@ -77,7 +82,7 @@ var Landing = (() => {
   };
 
   return {
-    getBaseFolder: getBaseFolder,
+    getCategories: getCategories,
     getOptions: getOptions,
     sampleOptions: sampleOptions,
   };
