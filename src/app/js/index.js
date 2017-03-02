@@ -2,13 +2,13 @@
   var createDom = function(categories, options) {
     // Create rows with title and links
     var bookmarks = document.getElementById("bookmarks");
-    bookmarks.innerHTML = categories.map(category => {
+    bookmarks.innerHTML = categories.map((category, index) => {
       var items = category.children
         .map(bookmark => `<li class="item">
             <a class="link" href="${bookmark.url}">${bookmark.title}</a>
             </li>`)
         .join("");
-      return `<tr class="row">
+      return `<tr class="row" style="animation-delay: ${index * 50}ms">
         <td class="category">${category.title}</td>
         <td><ul class="list line-custom">${items}</ul></td>
         </tr>`;
@@ -17,6 +17,8 @@
     // Add quote
     var quote = document.getElementById("quote");
     quote.innerHTML = options.quote;
+    quote.setAttribute("style",
+        `animation-delay: ${categories.length * 50}ms`);
   };
 
   var setStyles = function(options) {
