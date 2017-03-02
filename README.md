@@ -4,9 +4,10 @@ A Chrome extension that provides a minimal New Tab page.
 
 ## Screenshots
 
-![Screenshot 1: development](/img/scr_dev.png?raw=true)
-![Screenshot 2: education](/img/scr_edu.png?raw=true)
-![Screenshot 3: general](/img/scr_gen.png?raw=true)
+![](/img/scr_dev1.png?raw=true)
+![](/img/scr_edu1.png?raw=true)
+![](/img/scr_dev2.png?raw=true)
+![](/img/scr_edu2.png?raw=true)
 
 ## Usage
 
