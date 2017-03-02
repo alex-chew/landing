@@ -1,13 +1,17 @@
 (() => {
   var setOptionValues = function(options) {
     for (var o in options) {
-      document.getElementsByName(o)[0].value = options[o];
+      var input = document.getElementsByName(o)[0];
+      if (input.type == "checkbox") input.checked = options[o];
+      else input.value = options[o];
     }
   };
 
   var getOptionValues = function(options) {
     for (var o in options) {
-      options[o] = document.getElementsByName(o)[0].value;
+      var input = document.getElementsByName(o)[0];
+      if (input.type == "checkbox") options[o] = input.checked;
+      else options[o] = input.value;
     }
     return options;
   };

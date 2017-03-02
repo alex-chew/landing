@@ -1,5 +1,8 @@
 (() => {
   var createDom = function(categories, options) {
+    // Animate body if enabled
+    if (options.animate) document.body.setAttribute("class", "animated");
+
     // Create rows with title and links
     var bookmarks = document.getElementById("bookmarks");
     bookmarks.innerHTML = categories.map((category, index) => {

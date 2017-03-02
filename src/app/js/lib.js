@@ -1,6 +1,7 @@
 // Functions/constants used across multiple pages
 var Landing = (() => {
   var defaultOptions = {
+    animate: true,
     bgcolor: "#cccccc",
     lncolor: "#333333",
     lnsize: 2,
